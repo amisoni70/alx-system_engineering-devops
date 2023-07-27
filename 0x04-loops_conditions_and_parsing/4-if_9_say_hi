@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# script that displays "Best school" but "hi" on the 9th line
+i=0
+while ((i<10))
+do
+	echo "Best School"
+	((i++))
+	if [ $i -eq 9 ]
+	then
+		echo "Hi"
+	fi
+done
