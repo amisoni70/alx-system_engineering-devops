@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script that uses trap to intrepret SIGTERM
+while true;
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap 'echo "I am invincible!!!"' SIGTERM
+done
