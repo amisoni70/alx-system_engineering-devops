@@ -13,5 +13,5 @@ do
 	sleep 2
 	trap "I hate the kill command" SIGTERM
 	trap "Y U no love me?!" SIGINT
-	trap "terminator" SIGQUIT
+	trap "terminator" SIGTERM
 done
