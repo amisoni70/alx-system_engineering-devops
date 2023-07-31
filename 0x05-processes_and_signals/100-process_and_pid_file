@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Creates the file and then terminates itself
+terminator() {
+	rm /var/run/myscript.pid
+	exit
+}
+
+echo "$BASHPID" > /var/run/myscript.pid
+
+while true;
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap "I hate the kill command" SIGTERM
+	trap "Y U no love me?!" SIGINT
+	trap "terminator" SIGQUIT
+done
