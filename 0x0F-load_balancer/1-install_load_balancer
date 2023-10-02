@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# Install & configure HAproxy
+sudo apt-get -y update
+apt-get -y install haproxy
+
+# Configuration of config file
+config=\
+"
+frontend balancer
+        bind *:80
+        mode http
+        default_backend ami_backend
+backend ami_backend
+        balance roundrobin
+        server 314979-web-01 34.229.137.210:80 check
+        server 314979-web-02 3.90.85.167:80 check
+"
+echo "$config" | sudo tee -a /etc/haproxy/haproxy.cfg
+
+# enable HAproxy to be started by the init script
+sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+
+# Testing the HAproxy configuration file
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
+
+# Restarting the HAproxy server
+sudo service haproxy restart
