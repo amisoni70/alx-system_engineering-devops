@@ -36,26 +36,7 @@ defaults
 
 frontend balancer
         bind *:80
-        mode http
-        default_backend ami_backend
-backend ami_backend
-        balance roundrobin
-        server 314979-web-01 34.229.137.210:80 check
-        server 314979-web-02 3.90.85.167:80 check
-
-
-frontend balancer
-        bind *:80
-        mode http
-        default_backend ami_backend
-backend ami_backend
-        balance roundrobin
-        server 314979-web-01 34.229.137.210:80 check
-        server 314979-web-02 3.90.85.167:80 check
-
-
-frontend balancer
-        bind *:80
+	bind *:443 ssl crt /etc/letsencrypt/live/www.globalami.tech/combined.pem
         mode http
         default_backend ami_backend
 backend ami_backend
