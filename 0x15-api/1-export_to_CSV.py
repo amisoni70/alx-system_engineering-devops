@@ -2,9 +2,10 @@
 """A script that returns the to-do list progress for
 a given employees's ID
 """
+import csv
 import requests
 import sys
-import csv
+
 
 if __name__ == "__main__":
     url = "https://jsonplaceholder.typicode.com/"
